@@ -35,17 +35,12 @@ int update_myloc(struct Graph*g ,int time,StrHash hash,int dest){
     StrHash_NODE n_node;
     FILE * fp = fopen(".\\data\\curr_edge.txt","w");
     if(time==me.time_to_change){ //if my car has reached the end of a street
-        
         do{
             if(is_free=='n' || is_free=='N'){
                 //printf("modified**");
-                updateEdge(g,me.curr_node,n_node.v2,100);//updating the newly obtained congestion information(in graph)
+                updateEdge(g,me.curr_node,n_node.v2,15);//updating the newly obtained congestion information(in graph)
                 long long node_ind = Find_StrHash(hash,me.curr_street);
-                hash->bkt_arr[node_ind].congestion = 100;//updating the newly obtained congestion information(in graph)
-<<<<<<< Updated upstream
-=======
-                //update in hash table //updating the newly obtained congestion information(in graph)
->>>>>>> Stashed changes
+                hash->bkt_arr[node_ind].congestion = 15;//updating the newly obtained congestion information(in graph)
             }
         int currindex = Find_StrHash(hash,me.curr_street); //obtaing the index of the information stored about the edge using hash function via the edge name
         StrHash_NODE  a = hash->bkt_arr[currindex];//saving the deatils about the edge in the variable 'a'
@@ -129,13 +124,9 @@ void routing(struct Graph* g,StrHash hash,int dest){
     do{
             if(is_free=='n' || is_free=='N'){
                  //printf("modified**");
-                updateEdge(g,me.curr_node,n_node.v2,100);//updating the newly obtained congestion information(in graph)
+                updateEdge(g,me.curr_node,n_node.v2,15);//updating the newly obtained congestion information(in graph)
                 long long node_ind = Find_StrHash(hash,me.curr_street);
-<<<<<<< Updated upstream
-                hash->bkt_arr[node_ind].congestion = 100;
-=======
-                hash->bkt_arr[node_ind].congestion = 100;//updating the newly obtained congestion information(in graph)
->>>>>>> Stashed changes
+                hash->bkt_arr[node_ind].congestion = 15;
             }
     Stack s3 = dijikstra(g,me.curr_node,dest) ;//applying dijkstra's algorithm to find out the best possible route from starting node to destinartion
     //the following ~30 lines are the same as the update_myloc funciton, except that this is filling up the data for initial conditions when time t=0
@@ -193,7 +184,7 @@ void routing(struct Graph* g,StrHash hash,int dest){
 
         if(have_i_reached_node==1){
             L1:
-            printf("\n\nYou are currently at intersection : %d",me.curr_node);
+            // printf("\n\nYou are currently at intersection : %d",me.curr_node);
             printf("\nYou have reached your destination");
             printf("\n(Press any key to continue)");
             getch();

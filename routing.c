@@ -42,6 +42,10 @@ int update_myloc(struct Graph*g ,int time,StrHash hash,int dest){
                 updateEdge(g,me.curr_node,n_node.v2,100);//updating the newly obtained congestion information(in graph)
                 long long node_ind = Find_StrHash(hash,me.curr_street);
                 hash->bkt_arr[node_ind].congestion = 100;//updating the newly obtained congestion information(in graph)
+<<<<<<< Updated upstream
+=======
+                //update in hash table //updating the newly obtained congestion information(in graph)
+>>>>>>> Stashed changes
             }
         int currindex = Find_StrHash(hash,me.curr_street); //obtaing the index of the information stored about the edge using hash function via the edge name
         StrHash_NODE  a = hash->bkt_arr[currindex];//saving the deatils about the edge in the variable 'a'
@@ -127,7 +131,11 @@ void routing(struct Graph* g,StrHash hash,int dest){
                  //printf("modified**");
                 updateEdge(g,me.curr_node,n_node.v2,100);//updating the newly obtained congestion information(in graph)
                 long long node_ind = Find_StrHash(hash,me.curr_street);
+<<<<<<< Updated upstream
                 hash->bkt_arr[node_ind].congestion = 100;
+=======
+                hash->bkt_arr[node_ind].congestion = 100;//updating the newly obtained congestion information(in graph)
+>>>>>>> Stashed changes
             }
     Stack s3 = dijikstra(g,me.curr_node,dest) ;//applying dijkstra's algorithm to find out the best possible route from starting node to destinartion
     //the following ~30 lines are the same as the update_myloc funciton, except that this is filling up the data for initial conditions when time t=0
@@ -166,6 +174,7 @@ void routing(struct Graph* g,StrHash hash,int dest){
     printf("\n Is the path ahead avalible to travel? (Y/N): ");
         scanf(" %c",&is_free);
         n_node.v2=next.v2;
+        // strcpy(me.curr_street ,next.str) ;
         } while(is_free=='N'||is_free=='n');
     long long int time=0; //setting the simulation time to 0
     int have_i_reached_node=0; //a flag varriable to know if we've crossed a street or not
